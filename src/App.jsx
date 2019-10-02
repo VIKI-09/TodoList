@@ -1,6 +1,7 @@
 import React,{Component, useEffect} from 'react';
 import './App.css';
 import Header from './components/Header';
+import Footer from './components/Footer'
 import TodoList from './components/TodoList';
 import Context from './Context';
 import AddTodo from './components/AddTodo';
@@ -33,43 +34,65 @@ useEffect(() => {
 //  }, 5000)
 // }, []);
 
-  function toggleTodo(id) {
+function toggleTodo(id) {
     setTodos(todos.map(todo => {
         if (todo.id === id) {
           todo.completed = !todo.completed
+
       }
       return todo
     }))
 
   };
 
-function addTodo (title) {
+function addTodoItem (title) {
   setTodos(todos.concat([{
     title: title,
     id: Date.now(),
-    complete: false
+    completed: false,
+    editMode: false
+
   }
   ]))
 }
-
-
-
 
 function removeTodo(id) {
   setTodos(todos.filter(todo => todo.id !== id))
 }
 
+ function editToggle(id){
+   setTodos(todos.map(todo => {
+     if(todo.id === id){
+       todo.editMode = true
+     }
+  return todo
+   }))
+  // console.log(`Ready to edit! ${id}`)
+}
 
+function editTodo(id, value) {
+  setTodos(todos.map(todo => {
+    if(todo.id === id){
+      todo.title = value
+      todo.editMode = false
+    }
+    return todo
+  }))
+  }
 
-
-
-  return (<Context.Provider value={{removeTodo}}>
+// const newList = objectList.map(o => {
+//   if (o.id === newObject.id) {
+//     return newObject;
+//   }
+//   return o;
+// });
+  return (<Context.Provider value={{removeTodo, editToggle, editTodo}}>
       <div className="App">
           <Header />
-          <h1>Todos</h1>
-          <AddTodo onCreate={addTodo} />
+          <AddTodo onCreate={addTodoItem} />
           {loading && <Loader/>}
-          {todos.length ?( <TodoList todos={todos} onToggle={toggleTodo} /> ): (loading ? null : <p>Todo list is empty</p>)}
+          {todos.length ?( <TodoList todos={todos}   onToggle={toggleTodo} /> ): (loading ? null : <p>Todo list is empty</p>)}
+          <Footer />
         </div>
       </Context.Provider>
     );

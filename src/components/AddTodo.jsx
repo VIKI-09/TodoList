@@ -15,7 +15,8 @@ function submitHandler(event) {
 
 return ( <form onSubmit={submitHandler}>
   <TextField
-     id="filled-with-placeholder"
+     id="filled-full-width"
+     fullWidth
      placeholder="Add todo"
      value={value}
      onChange={event => setValue(event.target.value)}

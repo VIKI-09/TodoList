@@ -1,26 +1,18 @@
 import React,{Component} from 'react';
 import TodoItem from './TodoItem'
 import PropTypes from 'prop-types';
+import List from '@material-ui/core/List'
 
-
-
-
-
-const styles = {
-  ul:{
-    listStyle: 'none',
-    margin: 0,
-    padding: 0
-  }
-}
 
 function TodoList(props) {
   return (<div className='wrapper'>
-    <ul style={styles.ul}>
-      { props.todos.map((todo, index) => {
-          return  <TodoItem todo={todo} key={todo.id} index={index} onChange={props.onToggle} />})}
+    <List >
+      { props.todos.map((todo) => {
+        
+        return  <TodoItem todo={todo} key={todo.id}  onChange={props.onToggle} />}
+      )}
 
-    </ul>
+    </List>
   </div>)
 
 }
@@ -30,3 +22,13 @@ TodoList.propTypes = {
 }
 
 export default TodoList;
+
+
+
+// const styles = {
+//   ul:{
+//     listStyle: 'none',
+//     margin: 0,
+//     padding: 0
+//   }
+// }
