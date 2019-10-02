@@ -15,15 +15,16 @@ const [value, setValue] = useState('')
 
 
 
-       return(<form onSubmit={submitHandler} >
+       return( <form style={{width: '100%'}}  onSubmit={submitHandler}>
            <TextField
+
     id="filled-full-width"
-    label="EditTodo"
+    label="Editing Todo"
     style={{ margin: 8 }}
-    onChange={event => setValue(event.target.value)}
-    placeholder={todo.tittle}
+    onChange={event => setValue(event.target.value) }
+    placeholder={todo.title}
     // helperText="Full width!"
-    fullWidth
+    fullWidth={true}
     margin="normal"
     variant="filled"
     InputLabelProps={{

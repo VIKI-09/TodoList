@@ -1,4 +1,4 @@
-import React,{Component, useEffect} from 'react';
+import React,{ useEffect} from 'react';
 import './App.css';
 import Header from './components/Header';
 import Footer from './components/Footer'
@@ -67,7 +67,6 @@ function removeTodo(id) {
      }
   return todo
    }))
-  // console.log(`Ready to edit! ${id}`)
 }
 
 function editTodo(id, value) {
@@ -75,17 +74,13 @@ function editTodo(id, value) {
     if(todo.id === id){
       todo.title = value
       todo.editMode = false
+      todo.completed = false
     }
     return todo
   }))
-  }
+}
 
-// const newList = objectList.map(o => {
-//   if (o.id === newObject.id) {
-//     return newObject;
-//   }
-//   return o;
-// });
+
   return (<Context.Provider value={{removeTodo, editToggle, editTodo}}>
       <div className="App">
           <Header />
