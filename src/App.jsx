@@ -75,6 +75,7 @@ function editTodo(id, value) {
     if(todo.id === id){
       todo.title = value
       todo.editMode = false
+      todo.completed = false
     }
     return todo
   }))

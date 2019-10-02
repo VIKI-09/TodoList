@@ -40,7 +40,8 @@ function TodoItem ({todo, onChange}){
   return (
 
     <ListItem style={styles.li} dense button onClick={() => onChange(todo.id)}>
-
+    {!todo.editMode
+    ?(<Fragment>
          <ListItemIcon>
             <Checkbox
               color="primary"
@@ -48,15 +49,14 @@ function TodoItem ({todo, onChange}){
             />
           </ListItemIcon>
           <ListItemText className={classes.join(' ')} disableTypography={true} >
-          {!todo.editMode
-          ?(<Fragment>
+
               <Typography variant='subtitle1'>
                 {todo.title}
               </Typography>
-            </Fragment>)
-              :(<EditTodoForm todo={todo} onEdit={editTodo}/>) }
-          </ListItemText>
 
+          </ListItemText>
+          </Fragment>)
+            :(<EditTodoForm todo={todo} onEdit={editTodo}/>) }
 
       <ListItemSecondaryAction>
         <IconButton color="primary" aria-label="edit" onClick={editToggle.bind(null, todo.id)}>
