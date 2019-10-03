@@ -22,9 +22,10 @@ const [value, setValue] = useState('')
     label="Editing Todo"
     style={{ margin: 8 }}
     onChange={event => setValue(event.target.value) }
-    placeholder={todo.title}
+    defaultValue={todo.title}
     // helperText="Full width!"
-    fullWidth={true}
+    fullWidth
+    autoFocus
     margin="normal"
     variant="filled"
     InputLabelProps={{
@@ -34,33 +35,7 @@ const [value, setValue] = useState('')
  </form>
       )
     };
-// showEditTodoForm = () => {
-//     const { title} = this.props.todo
-//
-//     if(this.state.isShowing) {
-//       return(
-//         <div>
-//           <form ref={this.formRef} onSubmit={this.handleFormSubmit}>
-//           <input
-//               type="text"
-//               name="title"
-//               placeholder="Edit Your Todo"
-//               defaultValue={title}
-//             />
-//             <input type="submit" value="Save" />
-//           </form>
-//         </div>
-//       )
-//     }
-//   }
-// handleFormSubmit = (e) => {
-//     e.preventDefault()
-//
-//     const title = this.formRef.current['title'].value
-//     const { id } = this.props.todo
-//
-//     this.props.editTodo(id, title)
-//   }
+
 //
 // editTodo = (id, title) => {
 //     axios.put(`http://localhost:3000/todos/${id}`,
