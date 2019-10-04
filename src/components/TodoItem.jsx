@@ -11,6 +11,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import EditIcon from '@material-ui/icons/Edit'
 import Typography from '@material-ui/core/Typography'
 import EditTodoForm from './EditTodoForm'
+import Tooltip from '@material-ui/core/Tooltip';
 const styles = {
   li:{
     display: "flex",
@@ -35,7 +36,7 @@ function TodoItem ({todo, onChange}){
 
     if(todo.completed){
     classes.push('done');
-  }
+    }
 
   return (
 
@@ -59,27 +60,24 @@ function TodoItem ({todo, onChange}){
             :(<EditTodoForm todo={todo} onEdit={editTodo}/>) }
 
       <ListItemSecondaryAction>
+      <Tooltip title="Edit">
         <IconButton color="primary" aria-label="edit" onClick={editToggle.bind(null, todo.id)}>
           <EditIcon />
         </IconButton>
+        </Tooltip>
+        <Tooltip title="Delete">
         <IconButton  color="primary" aria-label="delete" onClick={removeTodo.bind(null, todo.id)} >
           <DeleteIcon />
         </IconButton>
+        </Tooltip>
       </ListItemSecondaryAction>
     </ListItem>
   )
 };
 
-
-
-
-
 TodoItem.propTypes = {
   todo: PropTypes.object.isRequired,
   onChange: PropTypes.func.isRequired
-
   }
-
-
 
 export default TodoItem;

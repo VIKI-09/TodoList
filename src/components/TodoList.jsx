@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React from 'react';
 import TodoItem from './TodoItem'
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List'
@@ -32,19 +32,3 @@ TodoList.propTypes = {
 }
 
 export default TodoList;
-
-
-// props.todos.map((todo) => {
-//
-//   return  <TodoItem todo={todo} key={todo.id}  onChange={props.onToggle} />}
-// )
-
-
-
-// const styles = {
-//   ul:{
-//     listStyle: 'none',
-//     margin: 0,
-//     padding: 0
-//   }
-// }

@@ -25,11 +25,7 @@ return ( <form onSubmit={submitHandler}>
      variant="filled"
    />
   </form>
-)
-// <form onSubmit={submitHandler} action="">
-//   <input value={value} onChange={event => setValue(event.target.value)}/>
-//   <button type="submit" >Add todo </button>
-// </form>
+  )
 }
 
 

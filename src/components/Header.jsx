@@ -5,8 +5,8 @@ import Typography from '@material-ui/core/Typography'
 export default function Header () {
   return(  <AppBar position="static">
       <Toolbar>
-        <Typography variant="h2" >
-          Todos
+        <Typography align="center" variant="h2" >
+           Todos
         </Typography>
         </Toolbar>
       </AppBar>

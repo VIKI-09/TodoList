@@ -6,17 +6,16 @@ import TodoList from './components/TodoList';
 import Context from './Context';
 import AddTodo from './components/AddTodo';
 import axios from 'axios';
-import Loader from './Loader';
+import Loader from './components/Loader';
 
-  const API_URL = 'https://jsonplaceholder.typicode.com/todos?_limit=5';
+  const API_URL = 'https://jsonbox.io/box_7da87468ab6c10280254/todos';
 
 function App() {
 
-    const [todos, setTodos] = React.useState([]);
+  const [todos, setTodos] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   const [category, setCategory] = React.useState('all')
-// const category = "active"
-//for getting data from API
+
 useEffect(() => {
   axios.get(API_URL)
   .then(res => {
@@ -43,7 +42,6 @@ function toggleTodo(id) {
       }
       return todo
     }))
-
   };
 
 function addTodoItem (title) {
@@ -52,7 +50,6 @@ function addTodoItem (title) {
     id: Date.now(),
     completed: false,
     editMode: false
-
   }
   ]))
 }
@@ -80,6 +77,7 @@ function editTodo(id, value) {
     return todo
   }))
 }
+
 function changeCategory (index){
 if (index === 0){
   setCategory('all')
