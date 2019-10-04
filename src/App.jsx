@@ -12,9 +12,10 @@ import Loader from './Loader';
 
 function App() {
 
-  const [todos, setTodos] = React.useState([]);
+    const [todos, setTodos] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
-
+  const [category, setCategory] = React.useState('all')
+// const category = "active"
 //for getting data from API
 useEffect(() => {
   axios.get(API_URL)
@@ -79,6 +80,17 @@ function editTodo(id, value) {
     return todo
   }))
 }
+function changeCategory (index){
+if (index === 0){
+  setCategory('all')
+}else if(index === 1){
+  setCategory('active')}
+  else {
+    setCategory('completed')
+}
+}
+
+
 
 
   return (<Context.Provider value={{removeTodo, editToggle, editTodo}}>
@@ -86,8 +98,8 @@ function editTodo(id, value) {
           <Header />
           <AddTodo onCreate={addTodoItem} />
           {loading && <Loader/>}
-          {todos.length ?( <TodoList todos={todos}   onToggle={toggleTodo} /> ): (loading ? null : <p>Todo list is empty</p>)}
-          <Footer />
+          {todos.length ?( <TodoList todos={todos} category={category}  onToggle={toggleTodo} /> ): (loading ? null : <p>Todo list is empty</p>)}
+          <Footer onSelect={changeCategory} />
         </div>
       </Context.Provider>
     );

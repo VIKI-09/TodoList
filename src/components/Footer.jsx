@@ -10,20 +10,21 @@ const useStyles = makeStyles({
   },
 });
 
-export default function Footer(props) {
+export default function Footer({onSelect}) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
     const handleChange = (event, index) => {
+      event.preventDefault()
       setValue(index);
-
+      onSelect(index)
     };
 
   return (
     <Paper className={classes.root}>
 
       <Tabs
-        value={0}
+        value={value}
         onChange={handleChange}
         indicatorColor="primary"
         textColor="primary"
