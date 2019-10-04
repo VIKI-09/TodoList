@@ -1,4 +1,4 @@
-# monitoring_app
+# TodoList
 
 My  training project on React.
 Simple todo list application.
